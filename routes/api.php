@@ -13,6 +13,28 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::group([
+//     'namespace' => 'Auth\\',
+//     'middleware' => 'api',
+// ], function () {
+//     Route::post('create', 'PasswordResetController@create');
+//     Route::get('find/{token}', 'PasswordResetController@find');
+//     Route::post('reset', 'PasswordResetController@reset');
+// });
+
+Route::group([
+    'middleware' => 'auth:api',
+    'namespace' => 'Api\\'
+], function () {
+
+    Route::name('user::')->prefix('user')->group(function () {
+        Route::get('/', 'UserController@index');
+        // Route::get('list', 'UserController@getAllUsers');
+        // Route::get('show/{id}', 'UserController@show');
+        // Route::get('delete/{id}', 'UserController@destroy');
+        // Route::get('logout', 'UserController@logout');
+        // Route::post('insert', 'UserController@store');
+        // Route::put('update/{id}', 'UserController@update');
+    });
+
 });
