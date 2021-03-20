@@ -51,15 +51,10 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        // if (get_class($exception) === \Laravel\Passport\Exceptions\OAuthServerException::class) {
-        //     return response(['error' => 'invalid_credentials', 'message' => $exception->getMessage()], 401);
-        // }
+        if (get_class($exception) === \Laravel\Passport\Exceptions\OAuthServerException::class) {
+            return response(['error' => 'invalid_credentials', 'message' => $exception->getMessage()], 401);
+        }
 
-        // return parent::render($request, $exception);
-
-        return response()->json([
-            'status' => 401,
-            'error' => 'Unauthenticated'
-        ], 401);
+        return parent::render($request, $exception);
     }
 }
