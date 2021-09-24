@@ -25,6 +25,7 @@ class Student extends Model
      * @var array
      */
     protected $dates = [
+        'birthday',
         'created_at',
         'updated_at',
         'deleted_at',

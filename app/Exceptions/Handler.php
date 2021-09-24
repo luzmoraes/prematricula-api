@@ -56,10 +56,5 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $exception);
-
-        // return response()->json([
-        //     'status' => 401,
-        //     'error' => 'Unauthenticated'
-        // ], 401);
     }
 }
