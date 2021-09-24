@@ -37,4 +37,31 @@ Route::group([
         // Route::put('update/{id}', 'UserController@update');
     });
 
+    Route::name('student::')->prefix('student')->group(function() {
+        Route::get('{id}/show', 'StudentsController@show');
+        Route::post('/search', 'StudentsController@search');
+        Route::post('/search-for-part-name', 'StudentsController@searchForPartOfName');
+    });
+
+    Route::name('responsible::')->prefix('responsible')->group(function() {
+        Route::get('{id}/show', 'ResponsiblesController@show');
+        Route::post('/search', 'ResponsiblesController@search');
+    });
+
+    Route::name('financial-responsible::')->prefix('financial-responsible')->group(function() {
+        Route::get('{id}/show', 'FinancialResponsiblesController@show');
+    });
+
+    Route::name('enrollment::')->prefix('enrollment')->group(function() {
+        Route::post('/', 'EnrollmentsController@store');
+    });
+
 });
+
+// Route::group(['namespace' => 'Api\\'], function () {
+    
+//     Route::name('enrollment::')->prefix('enrollment')->group(function() {
+//         Route::post('/', 'EnrollmentsController@store');
+//     });
+
+// });
