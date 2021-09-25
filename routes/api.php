@@ -50,6 +50,7 @@ Route::group([
 
     Route::name('financial-responsible::')->prefix('financial-responsible')->group(function() {
         Route::get('{id}/show', 'FinancialResponsiblesController@show');
+        Route::post('/search', 'FinancialResponsiblesController@search');
     });
 
     Route::name('enrollment::')->prefix('enrollment')->group(function() {

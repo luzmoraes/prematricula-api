@@ -12,4 +12,8 @@ class FinancialResponsiblesController extends Controller
     {
         return FinancialResponsible::find($id);
     }
+
+    public function search(Request $request) {
+        return FinancialResponsible::where('cpf', $request->get('cpf'))->first();
+    }
 }
